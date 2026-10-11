@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15 -12 230 250">
+<defs>
+  <filter id="fluff" x="-30%" y="-30%" width="160%" height="160%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <radialGradient id="fur" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".8" stop-color="#ececec"/><stop offset="1" stop-color="#cfcfcf"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset=".55" stop-color="#050505"/><stop offset="1" stop-color="#111"/></linearGradient>
+  <linearGradient id="rb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff004c"/><stop offset=".2" stop-color="#ff8a00"/><stop offset=".4" stop-color="#ffe600"/><stop offset=".6" stop-color="#2bff88"/><stop offset=".8" stop-color="#00d4ff"/><stop offset="1" stop-color="#ff00e5"/></linearGradient>
+  <linearGradient id="tee" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1a1a"/><stop offset="1" stop-color="#060606"/></linearGradient>
+</defs>
+<!-- уши: одно согнуто -->
+<g filter="url(#fluff)" fill="url(#fur)">
+  <ellipse cx="72" cy="48" rx="19" ry="48" transform="rotate(-8 72 48)"/>
+  <path d="M120 70 q6 -55 34 -62 q14 2 6 20 q-14 30 -26 48z"/>
+</g>
+<ellipse cx="72" cy="52" rx="8" ry="32" transform="rotate(-8 72 52)" fill="#bdb3b8"/>
+<path d="M128 66 q8 -40 26 -50 q4 4 0 12 q-12 24 -20 40z" fill="#bdb3b8"/>
+<!-- футболка -->
+<path d="M28 236 q2 -56 36 -70 q16 10 37 10 q21 0 37 -10 q34 14 36 70z" fill="url(#tee)" stroke="#222" stroke-width="2"/>
+<path d="M28 206 l-14 -8 q10 -26 34 -32 z M174 206 l14 -8 q-10 -26 -34 -32 z" fill="#111" stroke="#222" stroke-width="2"/>
+<path d="M78 168 q23 14 46 0" stroke="#2a2a2a" stroke-width="4" fill="none"/>
+<text x="101" y="205" text-anchor="middle" font-family="Impact,'Arial Black',sans-serif" font-size="22" letter-spacing="1" fill="url(#rb)" transform="rotate(-4 101 205)">FLIP</text>
+<text x="101" y="228" text-anchor="middle" font-family="Impact,'Arial Black',sans-serif" font-size="22" letter-spacing="1" fill="url(#rb)" transform="rotate(-4 101 228)">SWAG</text>
+<!-- голова -->
+<g filter="url(#fluff)" fill="url(#fur)"><circle cx="101" cy="118" r="56"/></g>
+<!-- очки как у Чувака: узкие тёмные прямоугольные -->
+<path d="M44 108 h114" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+<path d="M50 104 h42 q4 0 4 4 v8 q0 9 -10 9 h-32 q-8 0 -8 -9 v-8 q0 -4 4 -4z" fill="url(#shade)" stroke="#000" stroke-width="3"/>
+<path d="M110 104 h42 q4 0 4 4 v8 q0 9 -8 9 h-32 q-10 0 -10 -9 v-8 q0 -4 4 -4z" fill="url(#shade)" stroke="#000" stroke-width="3"/>
+<path d="M96 109 h14" stroke="#000" stroke-width="4"/>
+<path d="M56 109 l14 0 M116 109 l14 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity=".45"/>
+<path d="M78 120 l10 -12 M138 120 l10 -12" stroke="#fff" stroke-width="1.5" opacity=".18"/>
+<!-- нахмуренные брови -->
+<path d="M54 98 l36 3 M148 98 l-36 3" stroke="#555" stroke-width="5" stroke-linecap="round"/>
+<!-- нос и ухмылка -->
+<path d="M96 134 q5 4 10 0 q-5 6 -10 0z" fill="#3a3a3a"/>
+<path d="M88 148 q16 4 28 -5" stroke="#222" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+<!-- бородка -->
+<path d="M94 158 q7 14 14 0 q-2 8 -7 10 q-5 -2 -7 -10z" fill="#3b2f2a"/>
+</svg>

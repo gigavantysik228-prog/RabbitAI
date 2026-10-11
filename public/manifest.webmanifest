@@ -1,0 +1,23 @@
+{
+  "name": "Rabbit AI — умный помощник",
+  "short_name": "Rabbit AI",
+  "description": "Умный ИИ-помощник: ответы, учёба, тексты, файлы и идеи.",
+  "id": "/",
+  "start_url": "/?source=app",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#fdf8fc",
+  "theme_color": "#fbe4f0",
+  "lang": "ru",
+  "categories": ["productivity", "education", "utilities"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Новый чат", "url": "/?new=1", "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }] }
+  ]
+}

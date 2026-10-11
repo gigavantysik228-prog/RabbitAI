@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-15 -12 230 250">
+<defs>
+  <filter id="fluff" x="-30%" y="-30%" width="160%" height="160%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <radialGradient id="fur" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".75" stop-color="#f8f4fb"/><stop offset="1" stop-color="#e9e1f0"/></radialGradient>
+  <linearGradient id="ear" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc6dd"/><stop offset="1" stop-color="#ff9ec4"/></linearGradient>
+  <filter id="soft" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#c9a8e8" flood-opacity=".45"/></filter>
+</defs>
+<g filter="url(#soft)">
+  <g filter="url(#fluff)" fill="url(#fur)">
+    <ellipse cx="70" cy="62" rx="22" ry="56" transform="rotate(-12 70 62)"/>
+    <ellipse cx="132" cy="62" rx="22" ry="56" transform="rotate(12 132 62)"/>
+    <ellipse cx="101" cy="196" rx="62" ry="24"/>
+    <circle cx="101" cy="140" r="64"/>
+  </g>
+  <ellipse cx="70" cy="66" rx="10" ry="38" transform="rotate(-12 70 66)" fill="url(#ear)" opacity=".85"/>
+  <ellipse cx="132" cy="66" rx="10" ry="38" transform="rotate(12 132 66)" fill="url(#ear)" opacity=".85"/>
+  <g class="eyes">
+    <ellipse cx="78" cy="136" rx="8.5" ry="10" fill="#2b2140"/>
+    <ellipse cx="124" cy="136" rx="8.5" ry="10" fill="#2b2140"/>
+    <circle cx="81" cy="132" r="3.2" fill="#fff"/><circle cx="127" cy="132" r="3.2" fill="#fff"/>
+    <circle cx="75.5" cy="140" r="1.4" fill="#fff" opacity=".8"/><circle cx="121.5" cy="140" r="1.4" fill="#fff" opacity=".8"/>
+  </g>
+  <ellipse cx="64" cy="156" rx="11" ry="7" fill="#ffb3d1" opacity=".55"/>
+  <ellipse cx="138" cy="156" rx="11" ry="7" fill="#ffb3d1" opacity=".55"/>
+  <path d="M95 150 q6 5 12 0 q-6 7 -12 0z" fill="#ff8fb8"/>
+  <path d="M101 154 v5 M101 159 q-6 6 -11 1 M101 159 q6 6 11 1" stroke="#c48aa8" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+</g>
+</svg>

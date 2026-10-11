@@ -1,0 +1,22 @@
+1 ICON "rabbit.ico"
+1 VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "041904B0"
+    BEGIN
+      VALUE "CompanyName", "Rabbit AI"
+      VALUE "FileDescription", "Rabbit AI"
+      VALUE "FileVersion", "1.0.0"
+      VALUE "ProductName", "Rabbit AI"
+      VALUE "ProductVersion", "1.0.0"
+      VALUE "OriginalFilename", "RabbitAI.exe"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x419, 1200
+  END
+END

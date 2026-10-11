@@ -1,0 +1,8 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;font-family:sans-serif;background:linear-gradient(180deg,#fdf6fb,#f6f1ff);color:#3b2f52;padding:20px;box-sizing:border-box}
+.b{font-size:80px}h1{margin:8px 0}p{color:#8d80a3}button{margin-top:14px;padding:13px 26px;border:none;border-radius:14px;background:linear-gradient(135deg,#ff9ec4,#b9a6f5);color:#fff;font-size:16px}
+details{margin-top:26px;color:#8d80a3}input{width:100%;box-sizing:border-box;padding:11px;border-radius:12px;border:2px solid #eee0f2;margin-top:8px;font-size:15px}.s{background:#3b2f52}</style></head>
+<body><div><div class="b">🐰</div><h1>Нет связи</h1><p>Не получается достучаться до зайчика.<br/>Проверь интернет и попробуй снова.</p>
+<button onclick="RabbitAndroid.retry()">Попробовать снова</button>
+<details><summary>Изменить адрес сайта</summary><input id="u" placeholder="https://rabbit-ai.onrender.com"/><button class="s" onclick="RabbitAndroid.setUrl(document.getElementById('u').value)">Сохранить</button></details>
+<script>try{document.getElementById('u').value=RabbitAndroid.getUrl()}catch(e){}</script></div></body></html>

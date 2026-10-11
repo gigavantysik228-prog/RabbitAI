@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: rabbit-ai
+    runtime: node
+    plan: free
+    buildCommand: "echo ok"
+    startCommand: node server.js
+    envVars:
+      - key: API_KEY
+        sync: false
+      - key: SECRET
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: PAY_URL
+        sync: false
+      - key: PRICE
+        value: "1 490 ₸ / месяц"
+      - key: PRICE_PLUS
+        value: "790 ₸ / месяц"
+      - key: PRICE_MAX
+        value: "3 490 ₸ / месяц"
+      - key: PAY_URL_PLUS
+        sync: false
+      - key: PAY_URL_MAX
+        sync: false
+      - key: POLLINATIONS_KEY
+        sync: false
+      - key: HF_TOKEN
+        sync: false
+      - key: MAX_API_BASE
+        sync: false
+      - key: MAX_API_KEY
+        sync: false
+      - key: MAX_MODELS
+        sync: false

@@ -1,0 +1,19 @@
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#000;color:#eee;font-family:Pangolin,cursive;display:flex;justify-content:center;padding:30px 16px}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 10%,rgba(255,0,229,.18),transparent 40%),radial-gradient(circle at 80% 90%,rgba(0,212,255,.15),transparent 40%);pointer-events:none}
+.wrap{position:relative;width:min(560px,100%)}
+.head{text-align:center;margin-bottom:18px}.head img{width:110px}
+h1{font-family:"Rubik Mono One";font-size:22px;margin:6px 0}h1 span{background:linear-gradient(90deg,#ff004c,#ffe600,#2bff88,#00d4ff,#ff00e5);-webkit-background-clip:text;color:transparent}
+.head p{color:#888;margin:0}
+.card{background:#0b0b0b;border:1px solid #222;border-radius:22px;padding:22px;margin-bottom:16px}
+.card.vip{border-color:#a16207;box-shadow:0 0 40px -14px rgba(251,191,36,.6)}
+h2{font-weight:400;font-size:21px;margin:0 0 8px}.card p{color:#aaa;margin:0 0 12px;line-height:1.5}
+label{display:block;margin:12px 0 5px;color:#888;font-size:14px}.chk{display:flex;gap:8px;align-items:center;color:#aaa}
+input,select,textarea{width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid #262626;background:#111;color:#fff;font:inherit;outline:none}
+input:focus,select:focus{border-color:#ff00e5}.chk input{width:auto}
+textarea{margin-top:14px;min-height:110px;font:12px ui-monospace,monospace;resize:vertical}
+button,.btn{display:block;width:100%;margin-top:14px;padding:12px;border:none;border-radius:14px;background:linear-gradient(90deg,#ff00e5,#7b5cff,#00d4ff);color:#fff;font:inherit;font-size:17px;cursor:pointer;text-align:center;text-decoration:none}
+.gold{background:linear-gradient(90deg,#fde68a,#f59e0b,#fde047);color:#1a1200}
+.row{display:flex;gap:10px}.row>*{flex:1}.row button{background:#1a1a1a}
+.ghost{background:#111;border:1px solid #222;color:#888}
+.err{color:#ff4d79;margin-top:10px}.warn{color:#fbbf24!important;font-size:14px;margin-top:12px!important}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:#111;border:1px solid #333;padding:10px 18px;border-radius:99px;opacity:0;transition:.3s;pointer-events:none}.toast.show{opacity:1}

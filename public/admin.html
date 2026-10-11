@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex,nofollow"/>
+<title>Rabbit AI — админка</title><link rel="icon" href="/favicon.svg"/>
+<link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Rubik+Mono+One&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/admin.css"/></head>
+<body>
+<div class="wrap">
+  <div class="head"><img src="/bunny-swag.svg" alt=""/><h1>Админка <span>Rabbit AI</span></h1><p>Только для владельца 👑</p></div>
+
+  <form class="card" id="login">
+    <label>Пароль админа</label>
+    <input id="pw" type="password" required autocomplete="current-password" placeholder="ADMIN_PASSWORD"/>
+    <label class="chk"><input type="checkbox" id="remember" checked/> Запомнить на этом устройстве</label>
+    <button>Войти</button>
+    <div class="err" id="loginErr"></div>
+  </form>
+
+  <div id="panel" hidden>
+    <div class="card vip">
+      <h2>👑 Секретная VIP-подписка навсегда</h2>
+      <p>Только для вас: без срока, без лимитов сообщений, самая умная модель, большие файлы, анализ фото, длинные ответы.</p>
+      <button id="vipBtn" class="gold">Создать мой вечный VIP-код</button>
+      <div id="vipBox" hidden>
+        <textarea id="vipCode" readonly></textarea>
+        <div class="row"><button id="vipCopy">📋 Копировать</button><a id="vipGo" class="gold btn">⚡ Включить на этом устройстве</a></div>
+        <p class="warn">Никому не показывайте этот код — он даёт безлимит навсегда. Сохраните его, чтобы включить VIP на телефоне или другом браузере.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💎 Коды подписки для покупателей</h2>
+      <label>Тариф</label>
+      <select id="plan"><option value="plus">Rabbit Plus</option><option value="pro" selected>Rabbit Pro</option><option value="max">Rabbit Max</option></select>
+      <label>Срок</label>
+      <select id="days"><option value="7">7 дней</option><option value="30" selected>30 дней</option><option value="90">3 месяца</option><option value="365">1 год</option><option value="forever">Навсегда ∞</option></select>
+      <label>Сколько кодов</label><input id="count" type="number" value="1" min="1" max="50"/>
+      <label>Заметка (имя покупателя)</label><input id="note" maxlength="40"/>
+      <button id="makeBtn">Создать коды</button>
+      <textarea id="out" readonly placeholder="Здесь появятся коды — отправьте их покупателю"></textarea>
+    </div>
+    <button id="logout" class="ghost">Выйти из админки</button>
+  </div>
+  <div class="toast" id="toast"></div>
+</div>
+<script src="/admin.js"></script></body></html>

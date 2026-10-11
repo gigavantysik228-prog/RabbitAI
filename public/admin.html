@@ -7,7 +7,7 @@
 <div class="wrap">
   <div class="head"><img src="/bunny-swag.svg" alt=""/><h1>Админка <span>Rabbit AI</span></h1><p>Только для владельца 👑</p></div>
 
-  <form class="card" id="login">
+  <form class="card narrow" id="login">
     <label>Пароль админа</label>
     <input id="pw" type="password" required autocomplete="current-password" placeholder="ADMIN_PASSWORD"/>
     <label class="chk"><input type="checkbox" id="remember" checked/> Запомнить на этом устройстве</label>
@@ -16,29 +16,257 @@
   </form>
 
   <div id="panel" hidden>
-    <div class="card vip">
-      <h2>👑 Секретная VIP-подписка навсегда</h2>
-      <p>Только для вас: без срока, без лимитов сообщений, самая умная модель, большие файлы, анализ фото, длинные ответы.</p>
-      <button id="vipBtn" class="gold">Создать мой вечный VIP-код</button>
-      <div id="vipBox" hidden>
-        <textarea id="vipCode" readonly></textarea>
-        <div class="row"><button id="vipCopy">📋 Копировать</button><a id="vipGo" class="gold btn">⚡ Включить на этом устройстве</a></div>
-        <p class="warn">Никому не показывайте этот код — он даёт безлимит навсегда. Сохраните его, чтобы включить VIP на телефоне или другом браузере.</p>
-      </div>
-    </div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="stats" class="on">📊 Статистика</button>
+      <button data-tab="train">🎓 Обучение ИИ</button>
+      <button data-tab="users">👥 Пользователи</button>
+      <button data-tab="memory">🧠 Память</button>
+      <button data-tab="test">🧪 Проверить ИИ</button>
+      <button data-tab="codes">💎 Коды</button>
+      <button data-tab="limits">🎚 Лимиты</button>
+      <button data-tab="store">🛍 Магазин</button>
+      <button data-tab="fb">💬 Отзывы</button>
+      <button data-tab="server">🖥 Сервер</button>
+      <button data-tab="settings">⚙️ Сайт</button>
+    </nav>
 
-    <div class="card">
-      <h2>💎 Коды подписки для покупателей</h2>
-      <label>Тариф</label>
-      <select id="plan"><option value="plus">Rabbit Plus</option><option value="pro" selected>Rabbit Pro</option><option value="max">Rabbit Max</option></select>
-      <label>Срок</label>
-      <select id="days"><option value="7">7 дней</option><option value="30" selected>30 дней</option><option value="90">3 месяца</option><option value="365">1 год</option><option value="forever">Навсегда ∞</option></select>
-      <label>Сколько кодов</label><input id="count" type="number" value="1" min="1" max="50"/>
-      <label>Заметка (имя покупателя)</label><input id="note" maxlength="40"/>
-      <button id="makeBtn">Создать коды</button>
-      <textarea id="out" readonly placeholder="Здесь появятся коды — отправьте их покупателю"></textarea>
-    </div>
-    <button id="logout" class="ghost">Выйти из админки</button>
+    <!-- 📊 статистика -->
+    <section data-pane="stats">
+      <div class="grid4">
+        <div class="stat"><b id="sMsgs">—</b><span>сообщений сегодня</span></div>
+        <div class="stat"><b id="sUsers">—</b><span>пользователей сегодня</span></div>
+        <div class="stat"><b id="sKb">—</b><span>записей в памяти ИИ</span></div>
+        <div class="stat"><b id="sErr">—</b><span>ошибок сегодня</span></div>
+      </div>
+      <div class="card"><h2>📈 Последние дни</h2><div id="chart" class="chart"></div></div>
+      <div class="two">
+        <div class="card"><h2>🧭 Режимы сегодня</h2><div id="sModes" class="kv"></div></div>
+        <div class="card"><h2>💎 Тарифы сегодня</h2><div id="sPlans" class="kv"></div></div>
+      </div>
+      <div class="card"><h2>🤖 Здоровье ИИ</h2><div id="sHealth" class="kv"></div><h3>Какие модели отвечали сегодня</h3><div id="sModels" class="kv"></div></div>
+      <div class="card"><h2>🩺 Проверка моделей</h2><p>Отправляет каждой модели из меню ⚙️ короткий запрос и показывает, какие работают прямо сейчас.</p><button id="pingBtn">🩺 Проверить все модели</button><div id="pingOut" class="kv"></div></div>
+      <div class="card"><h2>⚠️ Последние ошибки</h2><div id="sErrors" class="log"></div></div>
+      <button id="refresh" class="ghost">🔄 Обновить</button>
+    </section>
+
+    <!-- 🎓 обучение -->
+    <section data-pane="train" hidden>
+      <div class="card">
+        <h2>🎓 Обучение ИИ</h2>
+        <p>Выберите способ. Всё, чему вы научите, Rabbit AI запомнит и будет использовать в ответах всем пользователям.</p>
+        <div class="ways">
+          <button data-way="interview" class="way on"><i>💬</i><b>ИИ спрашивает</b><span>Он задаёт вопросы — вы отвечаете</span></button>
+          <button data-way="manual" class="way"><i>✍️</i><b>Вопрос → ответ</b><span>Сразу пишете вопросы и ответы-промты</span></button>
+          <button data-way="demo" class="way"><i>🖥</i><b>Демонстрация экрана</b><span>Он смотрит, ведёт запись и запоминает</span></button>
+        </div>
+      </div>
+
+      <div class="card" data-wpane="interview">
+        <h2>💬 ИИ задаёт вопросы</h2>
+        <label>О чём учить? (тема)</label>
+        <input id="ivTopic" placeholder="Например: мой сайт и тарифы / мой магазин / школьная программа / мой стиль общения" value="Rabbit AI и его владелец"/>
+        <button id="ivStart">▶ Начать — пусть спрашивает</button>
+        <div id="ivBox" hidden>
+          <div class="bubble q" id="ivQ">…</div>
+          <textarea id="ivA" placeholder="Ваш ответ (можно как инструкцию: «Отвечай так: …»)"></textarea>
+          <div class="row"><button id="ivSave">💾 Ответить и дальше</button><button id="ivSkip" class="ghost">⏭ Другой вопрос</button><button id="ivStop" class="ghost">⏹ Закончить</button></div>
+          <div id="ivLog" class="log"></div>
+        </div>
+      </div>
+
+      <div class="card" data-wpane="manual" hidden>
+        <h2>✍️ Вопрос → ответ (промт)</h2>
+        <label>Тема (необязательно)</label><input id="mTopic" placeholder="Например: Оплата"/>
+        <label>Вопрос / ситуация</label><textarea id="mQ" class="short" placeholder="Например: Как купить подписку?"></textarea>
+        <label>Ответ или промт (инструкция, как отвечать)</label><textarea id="mA" placeholder="Например: Напиши владельцу в Telegram @Gamme_dogifj, после оплаты он пришлёт код. Код вводится в «Тарифы» → «Ввести код»."></textarea>
+        <label class="chk"><input type="checkbox" id="mAlways"/> 📌 Правило — применять всегда (к любому вопросу)</label>
+        <button id="mSave">💾 Запомнить</button>
+        <details><summary>📋 Добавить много сразу</summary>
+          <p class="hint">Формат: блоки через пустую строку. В каждом блоке строка <b>В:</b> вопрос и строка <b>О:</b> ответ.</p>
+          <textarea id="mBulk" placeholder="В: Сколько стоит Pro?&#10;О: 1490 ₸ в месяц.&#10;&#10;В: Кто тебя создал?&#10;О: Меня создала Любовь Воронцова."></textarea>
+          <button id="mBulkSave">💾 Запомнить все</button>
+        </details>
+      </div>
+
+      <div class="card" data-wpane="demo" hidden>
+        <h2>🖥 Демонстрация экрана</h2>
+        <p>Покажите экран и рассказывайте голосом (или пишите комментарии). ИИ каждые несколько секунд смотрит на экран, ведёт запись, а в конце превращает её в память.</p>
+        <label>Что показываете? (тема)</label><input id="dTitle" placeholder="Например: Как пользоваться Rabbit AI на телефоне"/>
+        <div class="two">
+          <div><label>Смотреть на экран каждые</label><select id="dEvery"><option value="4">4 сек</option><option value="6" selected>6 сек</option><option value="10">10 сек</option><option value="15">15 сек</option></select></div>
+          <div><label>Голос</label><select id="dMic"><option value="1" selected>🎙 Слушать мой голос</option><option value="0">Без голоса</option></select></div>
+        </div>
+        <label class="chk"><input type="checkbox" id="dRec" checked/> 🎥 Записывать видео демонстрации (можно скачать)</label>
+        <div class="row"><button id="dStart">🔴 Начать демонстрацию</button><button id="dStop" class="ghost" disabled>⏹ Закончить и запомнить</button></div>
+        <div id="dLive" hidden>
+          <div class="live"><video id="dVideo" muted playsinline autoplay></video><span class="rec">● REC <i id="dTime">0:00</i></span></div>
+          <div class="row"><input id="dNote" placeholder="💬 Комментарий для ИИ (Enter — отправить)"/></div>
+          <p class="hint" id="dSpeech"></p>
+        </div>
+        <h3>📝 Запись ИИ</h3>
+        <div id="dLog" class="log"><p class="hint">Здесь появятся заметки ИИ о том, что он видит.</p></div>
+        <a id="dDownload" class="btn ghost" hidden download="rabbit-demo.webm">⬇ Скачать видео демонстрации</a>
+        <div id="dResult" hidden><h3>🧠 Что ИИ запомнил</h3><div class="bubble" id="dMemo"></div></div>
+      </div>
+    </section>
+
+    <!-- 👥 пользователи -->
+    <section data-pane="users" hidden>
+      <div class="card">
+        <h2>❓ Последние вопросы пользователей</h2>
+        <p>Видно, что спрашивают. Нажмите «🎓 Научить», чтобы сразу записать правильный ответ в память ИИ.</p>
+        <input id="rqSearch" placeholder="🔍 Поиск по вопросам"/>
+        <div id="recent" class="log tall"></div>
+      </div>
+      <div class="card">
+        <h2>👥 Активные сегодня</h2>
+        <div id="users" class="users"></div>
+      </div>
+      <div class="card">
+        <h2>⛔ Заблокированные</h2>
+        <div class="row"><input id="banKey" placeholder="IP-адрес или ключ (ip:… / pro:…)"/><input id="banNote" placeholder="Причина"/></div>
+        <button id="banBtn" class="ghost danger">⛔ Заблокировать</button>
+        <div id="bans" class="log"></div>
+      </div>
+      <button id="usersRefresh" class="ghost">🔄 Обновить</button>
+    </section>
+
+    <!-- 🎚 лимиты -->
+    <section data-pane="limits" hidden>
+      <div class="card">
+        <h2>🎚 Лимиты тарифов</h2>
+        <p>Меняйте, сколько всего даёт каждый тариф в день. «∞» — без лимита. Изменения сразу видны на сайте в «Тарифах».</p>
+        <div class="table-wrap"><table id="limTable"></table></div>
+        <div class="row"><button id="limSave">💾 Сохранить лимиты</button><button id="limReset" class="ghost">↩ Вернуть как было</button></div>
+      </div>
+    </section>
+
+    <section data-pane="store" hidden>
+      <div class="card">
+        <h2>🛍 Магазин плагинов</h2>
+        <p>Плагины, которые опубликовали пользователи. Новые ждут вашей проверки — одобрите, и они появятся в магазине у всех. Официальные плагины Rabbit AI видны всегда.</p>
+        <label class="chk"><input type="checkbox" id="storeAuto"/> Публиковать без проверки (только с автофильтром безопасности)</label>
+        <div class="row"><select id="storeFilter"><option value="pending">⏳ На проверке</option><option value="ok">✅ Одобренные</option><option value="rejected">⛔ Отклонённые</option><option value="">Все</option></select><button id="storeReload" class="ghost">🔄 Обновить</button></div>
+        <div id="storeAdmin" class="store-admin"></div>
+      </div>
+    </section>
+
+    <section data-pane="fb" hidden>
+      <div class="card">
+        <h2>💬 Отзывы на ответы</h2>
+        <p>Пользователи ставят 👍 или 👎 под ответами. Плохие ответы можно сразу исправить — нажмите «🎓 Научить», и ИИ запомнит правильный ответ.</p>
+        <div class="grid4 fb-stats"><div class="stat"><b id="fbUp">0</b><span>👍 хороших</span></div><div class="stat"><b id="fbDown">0</b><span>👎 плохих</span></div><div class="stat"><b id="fbRate">—</b><span>довольны</span></div></div>
+        <div class="row"><select id="fbFilter"><option value="-1">👎 Только плохие</option><option value="1">👍 Только хорошие</option><option value="0">Все</option></select><button id="fbReload" class="ghost">🔄 Обновить</button><button id="fbClear" class="ghost danger">🧹 Очистить всё</button></div>
+        <div id="fbList" class="store-admin"></div>
+      </div>
+    </section>
+
+    <section data-pane="server" hidden>
+      <div class="card">
+        <h2>🖥 Состояние сервера</h2>
+        <div id="srvInfo" class="kv"></div>
+        <div class="row"><button id="srvSave">💾 Сохранить данные сейчас</button><button id="srvReload" class="ghost">🔄 Обновить</button><button id="srvReset" class="ghost danger">🧹 Сбросить статистику за сегодня</button></div>
+      </div>
+      <div class="card">
+        <h2>✉️ Личное сообщение пользователю</h2>
+        <p>Пользователь увидит его при следующем открытии сайта. Ключ можно взять во вкладке «👥 Пользователи» (кнопка ✉️ подставит его сама).</p>
+        <input id="msgKey" placeholder="Ключ пользователя (ip:… или код)"/>
+        <textarea id="msgText" class="short" maxlength="500" placeholder="Например: Спасибо, что пользуетесь Rabbit AI! Дарю вам скидку 🎁"></textarea>
+        <button id="msgSend">✉️ Отправить</button>
+      </div>
+      <div class="card">
+        <h2>📋 Журнал действий админа</h2>
+        <p>Кто и когда что менял в админке (входы, коды, блокировки, настройки).</p>
+        <div id="auditLog" class="log"></div>
+        <button id="auditClear" class="ghost">🧹 Очистить журнал</button>
+      </div>
+    </section>
+
+    <!-- 🧠 память -->
+    <section data-pane="memory" hidden>
+      <div class="card">
+        <h2>🧠 Память ИИ</h2>
+        <p id="storageInfo" class="hint"></p>
+        <div class="row"><input id="kbSearch" placeholder="🔍 Поиск по памяти"/><select id="kbKind"><option value="">Все</option><option value="qa">💬 Вопрос-ответ</option><option value="rule">📌 Правила</option><option value="demo">🖥 Демонстрации</option></select></div>
+        <div id="kbList" class="kb"></div>
+        <div class="row"><button id="kbExport" class="ghost">⬇ Скачать резервную копию</button><label class="btn ghost file">⬆ Загрузить копию<input type="file" id="kbImport" accept=".json" hidden/></label><button id="kbClear" class="ghost danger">🗑 Стереть всё</button></div>
+      </div>
+    </section>
+
+    <!-- 🧪 тест -->
+    <section data-pane="test" hidden>
+      <div class="card">
+        <h2>🧪 Проверить, чему научился ИИ</h2>
+        <textarea id="tQ" class="short" placeholder="Задайте вопрос, как пользователь"></textarea>
+        <label class="chk"><input type="checkbox" id="tSwag"/> 😎 Ответ в стиле Swag</label>
+        <button id="tAsk">Спросить</button>
+        <div id="tMeta" class="hint"></div>
+        <div class="bubble" id="tA" hidden></div>
+      </div>
+    </section>
+
+    <!-- 💎 коды -->
+    <section data-pane="codes" hidden>
+      <div class="card vip">
+        <h2>👑 Секретная VIP-подписка навсегда</h2>
+        <p>Только для вас: без срока, без лимитов, самая умная модель, большие файлы, анализ фото, длинные ответы.</p>
+        <button id="vipBtn" class="gold">Создать мой вечный VIP-код</button>
+        <div id="vipBox" hidden>
+          <textarea id="vipCode" readonly></textarea>
+          <div class="row"><button id="vipCopy">📋 Копировать</button><a id="vipGo" class="gold btn">⚡ Включить на этом устройстве</a></div>
+          <p class="warn">Никому не показывайте этот код — он даёт безлимит навсегда.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h2>💎 Коды подписки для покупателей</h2>
+        <label>Тариф</label>
+        <select id="plan"><option value="plus">Rabbit Plus</option><option value="pro" selected>Rabbit Pro</option><option value="max">Rabbit Max</option></select>
+        <label>Срок</label>
+        <select id="days"><option value="1">1 день (пробный)</option><option value="7">7 дней</option><option value="30" selected>30 дней</option><option value="90">3 месяца</option><option value="365">1 год</option><option value="forever">Навсегда ∞</option></select>
+        <label>Сколько кодов</label><input id="count" type="number" value="1" min="1" max="50"/>
+        <label>Заметка (имя покупателя)</label><input id="note" maxlength="40"/>
+        <button id="makeBtn">Создать коды</button>
+        <textarea id="out" readonly placeholder="Здесь появятся коды — отправьте их покупателю"></textarea>
+        <div class="row"><button id="outCopy" class="ghost">📋 Копировать все</button><button id="outMsg" class="ghost">✉️ Копировать с инструкцией</button></div>
+      </div>
+      <div class="card">
+        <h2>🔍 Проверить или отключить код</h2>
+        <p>Если покупатель вернул деньги или код утёк — отключите его, и подписка перестанет работать.</p>
+        <textarea id="rvCode" class="short" placeholder="RABBIT-…"></textarea>
+        <div class="row"><button id="ckBtn" class="ghost">🔍 Проверить</button><button id="rvBtn" class="ghost danger">⛔ Отключить код</button></div>
+        <div id="rvOut" class="hint"></div>
+      </div>
+      <div class="card"><h2>🧾 История выданных кодов</h2><div id="codeLog" class="log"></div></div>
+    </section>
+
+    <!-- ⚙️ сайт -->
+    <section data-pane="settings" hidden>
+      <div class="card">
+        <h2>📢 Объявление на сайте</h2>
+        <p>Покажется всем пользователям сверху чата (можно закрыть). Пусто — не показывать.</p>
+        <textarea id="setAnn" class="short" maxlength="500" placeholder="Например: 🎉 Скидка 50% на Rabbit Pro до воскресенья!"></textarea>
+        <h2>🧩 Дополнительные инструкции для ИИ</h2>
+        <p>Глобальный промт: как Rabbit AI должен вести себя со всеми.</p>
+        <textarea id="setExtra" maxlength="6000" placeholder="Например: Всегда упоминай, что у нас есть Telegram-канал @..."></textarea>
+        <h2>🧩 Плагины</h2>
+        <p>Снимите галочку, чтобы выключить плагин для всех пользователей.</p>
+        <div id="setPlugins" class="plug-admin"></div>
+        <h2>🎨 Внешний вид</h2>
+        <div class="grid2"><div><label>Тема по умолчанию для новых посетителей</label><select id="setTheme"><option value="">Как в системе (светлая/тёмная)</option><option value="light">☁️ Пушистая (светлая)</option><option value="dark">😎 SWAG (тёмная)</option><option value="dog">🐶 Dog</option></select></div>
+        <div><label>Ссылка «💬 Поддержка» в меню (Telegram, WhatsApp…)</label><input id="setSupport" maxlength="300" placeholder="https://t.me/…"/></div></div>
+        <label>Своё приветствие под «Привет! Я Rabbit AI» (пусто — стандартное)</label>
+        <input id="setWelcome" maxlength="300" placeholder="Например: Задай любой вопрос — отвечу за секунду ✨"/>
+        <h2>⏸ Режимы</h2>
+        <p>Снимите галочку, чтобы временно выключить режим для всех (кроме VIP). Кнопка режима пропадёт с сайта.</p>
+        <div id="setModes" class="plug-admin"></div>
+        <h2>🚫 Запрещённые слова</h2>
+        <p>Сообщения с этими словами не отправляются в ИИ. По одному слову или фразе в строке.</p>
+        <textarea id="setBad" class="short" maxlength="6000" placeholder="казино&#10;ставки"></textarea>
+        <label class="chk"><input type="checkbox" id="setMaint"/> 🛠 Техобслуживание — чат работает только у VIP</label>
+        <button id="setSave">💾 Сохранить</button>
+      </div>
+      <button id="logout" class="ghost">Выйти из админки</button>
+    </section>
   </div>
   <div class="toast" id="toast"></div>
 </div>

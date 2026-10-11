@@ -21,11 +21,12 @@
 <script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/atom-one-dark.min.css" />
 <link rel="stylesheet" href="/style.css" />
+<link rel="stylesheet" href="/dog.css" />
 </head>
 <body>
 <div class="sky">
   <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span><span class="cloud c4"></span>
-  <span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span>
+  <span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span><span id="dogSky"></span>
 </div>
 <canvas id="fluff"></canvas>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="furry" x="-10%" y="-20%" width="120%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
@@ -33,7 +34,7 @@
 <div class="app">
   <aside id="sidebar" class="sidebar">
     <div class="side-head">
-      <a class="brand" href="/"><img class="l-only" src="/favicon.svg" alt="" /><img class="d-only" src="/logo-swag.svg" alt="" /><span>Rabbit <em>AI</em></span></a>
+      <a class="brand" href="/"><img class="l-only" src="/favicon.svg" alt="" /><img class="d-only" src="/logo-swag.svg" alt="" /><img class="g-only" src="/dog.svg" alt="" /><span>Rabbit <em>AI</em></span></a>
       <button class="icon-btn only-mobile" id="closeSide" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <button id="newChat" class="new-chat"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> Новый чат</button>
@@ -43,15 +44,23 @@
     </div>
     <div class="side-tools">
       <button id="openSettings" class="tool-btn" title="Настройки">⚙️ Настройки</button>
+      <button id="sumChat" class="tool-btn" title="Краткий итог текущего чата">📝 Итог чата</button>
+    </div>
+    <div class="side-tools">
+      <button id="openPlugins" class="tool-btn" title="Плагины ИИ">🧩 Плагины</button>
+      <a id="supportLink" class="tool-btn" target="_blank" rel="noopener" hidden>💬 Поддержка</a>
+    </div>
+    <div class="side-tools">
       <button id="clearAll" class="tool-btn" title="Удалить все чаты">🗑 Очистить</button>
     </div>
     <a href="/download" class="tool-btn app-link">📲 Приложения для телефона и ПК</a>
+    <div id="cats" class="cats"><button data-cat="chat" class="on">💬 Чат</button><button data-cat="code">👨‍💻 Код</button></div>
     <p class="side-label">Мои чаты</p>
     <input id="chatSearch" class="chat-search" type="search" placeholder="🔍 Поиск по чатам…" />
     <nav id="chatList" class="chat-list"></nav>
     <div class="side-foot">
       <img src="/bunny.svg" alt="" class="mini-bunny" />
-      <div><b>Rabbit AI</b><span class="l-only">Умный, добрый и пушистый ☁️</span><span class="d-only">Не милый. Просто свэг.</span></div>
+      <div><b>Rabbit AI</b><span class="l-only">Умный, добрый и пушистый ☁️</span><span class="d-only">Не милый. Просто свэг.</span><span class="g-only">Верный, умный и весёлый 🐾</span></div>
     </div>
   </aside>
   <div id="overlay" class="overlay"></div>
@@ -59,12 +68,13 @@
   <div class="stage">
     <header class="top">
       <button class="icon-btn only-mobile" id="openSide" aria-label="Меню"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
-      <div class="status"><span class="dot"></span> <span class="st-light l-only">Зайчик на связи</span><span class="st-dark d-only">SWAG MODE ON</span></div>
+      <div class="status"><span class="dot"></span> <span class="st-light l-only">Зайчик на связи</span><span class="st-dark d-only">SWAG MODE ON</span><span class="g-only">Пёсик на связи 🐶</span></div>
       <span id="usage" class="usage" title="Сообщений осталось сегодня"></span>
       <button id="proBtn" class="pro-btn"><span>💎</span> <b id="proLabel">Тарифы</b></button>
       <button id="themeBtn" class="theme-btn" aria-label="Сменить тему"><span class="t-sun">☀️</span><span class="t-moon">🌈</span><i></i></button>
     </header>
 
+    <div id="announce" class="announce" hidden><span id="announceText"></span><button id="announceX" aria-label="Закрыть">×</button></div>
     <main id="main">
       <section id="welcome" class="welcome">
         <div class="hero">
@@ -73,8 +83,8 @@
           <span class="spark s1">✦</span><span class="drip">FLIP<br/>SWAG</span><span class="spark s2">✧</span><span class="spark s3">✦</span><span class="heart">♡</span>
           <div class="shadow"></div>
         </div>
-        <h1><span class="l-only">Привет! Я <span class="name">Rabbit AI</span></span><span class="d-only">Йо. Я Rabbit AI</span></h1>
-        <p class="sub"><span class="l-only">Пушистый, но очень умный помощник. Объясню сложное, решу задачу, напишу текст и придумаю идеи 🌸</span><span class="d-only">Без лишних слов. Объясню, решу, напишу, придумаю. Чётко и по делу.</span></p>
+        <h1><span class="l-only">Привет! Я <span class="name">Rabbit AI</span></span><span class="d-only">Йо. Я Rabbit AI</span><span class="g-only">Гав! Я <span class="name">Rabbit AI</span></span></h1>
+        <p class="sub"><span class="l-only">Пушистый, но очень умный помощник. Объясню сложное, решу задачу, напишу текст и придумаю идеи 🌸</span><span class="d-only">Без лишних слов. Объясню, решу, напишу, придумаю. Чётко и по делу.</span><span class="g-only">Верный пёсик-помощник: найду ответ, решу задачу и принесу идею в зубах 🦴</span></p>
         <div class="cards">
           <button class="card" style="--c:#c4b5fd;--bg:#f3efff" data-q="Объясни простыми словами, как работает квантовый компьютер — как для школьника"><i>🧠</i><b>Объясни просто</b><span>Как работает квантовый компьютер — для школьника</span></button>
           <button class="card" style="--c:#f9a8d4;--bg:#fff0f7" data-q="Реши уравнение x² − 5x + 6 = 0 и объясни каждый шаг"><i>🧮</i><b>Реши задачу</b><span>x² − 5x + 6 = 0 с объяснением каждого шага</span></button>
@@ -84,32 +94,47 @@
           <button class="card" style="--c:#fda4af;--bg:#fff1f3" data-mode="draw" data-q="Нарисуй милого белого зайчика-космонавта на Луне, мультяшный стиль"><i>🎨</i><b>Нарисуй картинку</b><span>Зайчик-космонавт на Луне</span></button>
         </div>
       </section>
+      <section id="welcomeCode" class="welcome code-welcome" hidden>
+        <div class="code-hero">👨‍💻</div>
+        <h1><span class="l-only name">Режим кода</span><span class="d-only">Код. Без воды.</span><span class="g-only name">Режим кода 🐶</span></h1>
+        <p class="sub">Отдельные чаты для программирования: напишу, исправлю, объясню и оптимизирую код на любом языке. Пиши задачу или прикрепи файл.</p>
+        <div class="cards">
+          <button class="card" style="--c:#93c5fd;--bg:#eef5ff" data-q="Напиши на Python Telegram-бота, который отвечает на сообщения, с пошаговой инструкцией запуска"><i>🤖</i><b>Telegram-бот</b><span>Python-бот с инструкцией запуска</span></button>
+          <button class="card" style="--c:#86efac;--bg:#eefcf3" data-q="Сделай красивую адаптивную лендинг-страницу на HTML и CSS для кофейни одним файлом"><i>🌐</i><b>Сайт</b><span>Лендинг на HTML/CSS одним файлом</span></button>
+          <button class="card" style="--c:#fda4af;--bg:#fff1f3" data-q="Найди и исправь ошибки в моём коде, объясни что было не так. Код:"><i>🐞</i><b>Исправь ошибку</b><span>Найду баг и объясню причину</span></button>
+          <button class="card" style="--c:#c4b5fd;--bg:#f3efff" data-q="Объясни простыми словами, что такое рекурсия, с примерами на JavaScript"><i>📚</i><b>Объясни код</b><span>Рекурсия на примерах JavaScript</span></button>
+        </div>
+      </section>
       <section id="chat" class="chat"></section>
     </main>
 
     <footer class="composer">
       <div id="modes" class="modes">
-        <button data-mode="chat" class="on">💬 Чат</button>
-        <button data-mode="search">🌐 Интернет</button>
-        <button data-mode="deep">🧠 Глубоко</button>
-        <button data-mode="draw">🎨 Нарисовать</button>
-        <button data-mode="code">👨‍💻 Код</button>
-        <button data-mode="tutor">🎓 Репетитор</button>
-        <button data-mode="writer">✍️ Писатель</button>
-        <button data-mode="translate">🌍 Перевод</button>
+        <button data-mode="deep">🧠 Глубокое мышление</button>
+        <button data-mode="codex" class="codex">⚡ CodeX</button>
+        <button data-mode="meme" data-only="chat" class="meme">🤪 Мем-чат</button>
+        <button data-mode="draw" data-only="chat">🎨 Картинка</button>
+        <button data-mode="video" data-only="chat">🎬 Видео</button>
+        <button data-mode="tutor" data-only="chat">🎓 Репетитор</button>
+        <button data-mode="writer" data-only="chat">✍️ Писатель</button>
+        <button data-mode="translate" data-only="chat">🌍 Перевод</button>
       </div>
+      <div id="toolsPop" class="tools-pop" hidden><input id="toolsSearch" placeholder="🔍 Найти инструмент…" /><div id="toolsList" class="tools-list"></div></div>
+      <div id="voiceBar" class="voice-bar" hidden><span class="pulse"></span><b id="voiceState">Слушаю…</b><button type="button" id="voiceStop">⏹ Закончить разговор</button></div>
       <div id="attachments" class="attachments"></div>
       <form id="form" class="input-box">
+        <button type="button" id="toolsBtn" class="in-btn tools" title="Инструменты ИИ (или набери /)">🧰</button>
         <button type="button" id="attachBtn" class="in-btn" title="Прикрепить файл или фото"><svg viewBox="0 0 24 24"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 01-7.8-7.8l8.6-8.6a3.7 3.7 0 015.2 5.2l-8.6 8.6a1.8 1.8 0 01-2.6-2.6l7.9-7.9"/></svg></button>
         <input type="file" id="fileInput" multiple hidden accept=".txt,.md,.csv,.json,.html,.htm,.xml,.pdf,.docx,.py,.js,.ts,.java,.c,.cpp,.cs,.go,.rb,.php,.sql,.css,.yaml,.yml,.log,image/*" />
         <textarea id="input" data-noi18n rows="1" placeholder="Спроси пушистика о чём угодно…" data-dark="Давай, спрашивай…" autofocus></textarea>
+        <button type="button" id="modelBtn" class="in-btn gear" title="Модель ИИ и настройки ответа"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg></button>
         <button type="button" id="micBtn" class="in-btn" title="Голосовой ввод"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></button>
         <button id="send" type="submit" aria-label="Отправить">
           <svg class="i-send" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
           <svg class="i-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2.5"/></svg>
         </button>
       </form>
-      <p class="hint">Enter — отправить · Shift+Enter — новая строка · <span class="l-only">Зайчик может ошибаться 🐾</span><span class="d-only">Даже свэг иногда ошибается</span></p>
+      <p class="hint">Enter — отправить · Shift+Enter — новая строка · <span class="l-only">Зайчик может ошибаться 🐾</span><span class="d-only">Даже свэг иногда ошибается</span><span class="g-only">Пёсик тоже может ошибаться 🐾</span></p>
     </footer>
   </div>
 </div>
@@ -120,6 +145,8 @@
     <h2>⚙️ Настройки</h2>
     <label>Расскажи о себе и как тебе отвечать <small>(зайчик запомнит)</small>
       <textarea id="setAbout" rows="4" maxlength="1500" placeholder="Например: меня зовут Люба, я из Казахстана, учусь в 10 классе. Объясняй просто и с примерами."></textarea></label>
+    <label>🧠 Что зайчик помнит о тебе <small>(напиши в чате «Запомни, что …»)</small>
+      <div id="memList" class="mem-list"></div></label>
     <label>Длина ответов
       <div class="seg" id="setLength"><button data-v="short">Коротко</button><button data-v="normal">Обычно</button><button data-v="long">Подробно</button></div></label>
     <div class="two">
@@ -133,13 +160,62 @@
     <button id="setSave" class="buy">Сохранить</button>
   </div>
 </div>
+<div id="modelModal" class="modal" hidden>
+  <div class="modal-card set-card model-card">
+    <button class="modal-x" id="modelClose" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2>⚙️ Модель ИИ</h2>
+    <p class="model-note" id="modelNote">Выбор модели — в тарифах Plus, Pro и Max 💎</p>
+    <div id="modelList" class="model-list"></div>
+    <label>🎭 Роль ИИ
+      <select id="setRole"></select></label>
+    <label>🎨 Креативность ответов
+      <div class="seg" id="setTemp"><button data-v="precise">🎯 Точно</button><button data-v="balanced">⚖️ Баланс</button><button data-v="creative">🎨 Креативно</button></div></label>
+    <label>📏 Длина ответов
+      <div class="seg" id="setLength2"><button data-v="short">Коротко</button><button data-v="normal">Обычно</button><button data-v="long">Подробно</button></div></label>
+    <button id="modelSave" class="buy">Готово</button>
+  </div>
+</div>
+<div id="plugModal" class="modal" hidden>
+  <div class="modal-card set-card plug-card">
+    <button class="modal-x" id="plugClose" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2>🧩 Плагины</h2>
+    <p class="model-note plug-note">Плагины дают зайчику живые данные из интернета и точные инструменты. Они включаются сами, когда нужны — просто спроси, например: «Погода в Астане», «Курс доллара», «Сколько стоит биткоин», «Сделай QR-код для …».</p>
+    <div class="plug-tabs" id="plugTabs"><button data-t="built" class="on">Встроенные</button><button data-t="mine">Мои плагины</button><button data-t="store">🛍 Магазин</button></div>
+    <div class="plug-pane" data-p="built"><div id="plugList" class="plug-list"></div></div>
+    <div class="plug-pane" data-p="mine" hidden>
+      <p class="model-note">Создай свой плагин — как GPTs в ChatGPT. Вызов: напиши <b>@название</b> в сообщении, или задай слова-триггеры, или включи «всегда».</p>
+      <div id="myPlugList" class="plug-list"></div>
+      <button id="plugNew" class="plug-add">➕ Создать плагин</button>
+      <form id="plugForm" class="plug-form" hidden>
+        <div class="pf-row"><input id="pfE" maxlength="4" placeholder="🧩" class="pf-e"/><input id="pfName" maxlength="40" placeholder="Название (например: Переводчик)" required/></div>
+        <input id="pfDesc" maxlength="200" placeholder="Короткое описание"/>
+        <div class="pf-type"><label><input type="radio" name="pfType" value="prompt" checked/> 💬 Инструкции</label><label><input type="radio" name="pfType" value="api"/> 🌐 API (Plus+)</label></div>
+        <textarea id="pfPrompt" maxlength="4000" rows="4" placeholder="Что должен делать зайчик, когда включён плагин? Например: «Ты — строгий учитель английского. Исправляй ошибки и объясняй правило»"></textarea>
+        <div id="pfApi" hidden>
+          <input id="pfUrl" maxlength="500" placeholder="https://api.example.com/search?q={query}"/>
+          <div class="pf-row"><input id="pfHname" maxlength="40" placeholder="Заголовок (необязательно), напр. X-API-Key"/><input id="pfHval" maxlength="400" placeholder="Значение / ключ" type="password"/></div>
+          <button type="button" id="pfTest" class="ghost-btn">🔌 Проверить API</button>
+          <pre id="pfTestOut" class="pf-out" hidden></pre>
+        </div>
+        <input id="pfTrig" maxlength="300" placeholder="Слова-триггеры через запятую (необязательно)"/>
+        <label class="pf-check"><input type="checkbox" id="pfAlways"/> Работать всегда (в каждом сообщении)</label>
+        <div class="pf-btns"><button type="submit" class="buy">💾 Сохранить</button><button type="button" id="pfPublish" class="ghost-btn">📤 Опубликовать в магазин</button><button type="button" id="pfCancel" class="ghost-btn">Отмена</button></div>
+      </form>
+    </div>
+    <div class="plug-pane" data-p="store" hidden>
+      <input id="storeSearch" class="pf-search" placeholder="🔎 Поиск плагинов"/>
+      <div id="storeList" class="plug-list"></div>
+    </div>
+    <button id="plugSave" class="buy">Готово</button>
+  </div>
+</div>
 <div id="drop" class="drop"><div>📎 Отпусти файлы — зайчик их прочитает</div></div>
 
 <div id="proModal" class="modal" hidden>
   <div class="modal-card">
     <button class="modal-x" id="proClose" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <div class="modal-head">
-      <img class="l-only" src="/bunny.svg" alt="" /><img class="d-only" src="/bunny-swag.svg" alt="" />
+      <img class="l-only" src="/bunny.svg" alt="" /><img class="d-only" src="/bunny-swag.svg" alt="" /><img class="g-only" src="/dog.svg" alt="" />
       <h2>Rabbit <span>Тарифы</span> 💎</h2>
       <p>Выбери, насколько умным и безлимитным будет твой зайчик</p>
     </div>

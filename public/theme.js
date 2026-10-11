@@ -1,1 +1,1 @@
-(function(){try{var t=localStorage.getItem("rabbit-theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}})();
+(function(){try{var t=localStorage.getItem("rabbit-theme"),c=document.documentElement.classList;if(t==="dog")c.add("dog");else if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))c.add("dark")}catch(e){}})();

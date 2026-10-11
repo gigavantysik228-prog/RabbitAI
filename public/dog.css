@@ -1,0 +1,155 @@
+/* сгенерировано tools-dog-css.py — правьте dog.manual.css */
+:where(html.dog) body{background:linear-gradient(180deg,#fdfaf6 0%,#fef8f2 55%,#fff5f0 100%)}
+:where(html.dog) .g1{background:#fdecd8}
+:where(html.dog) .g2{background:#fdeddb}
+:where(html.dog) .cloud{box-shadow:0 10px 30px rgba(177,98,52,.18)}
+:where(html.dog) .brand img{box-shadow:0 6px 16px -4px rgba(255,200,158,.6)}
+:where(html.dog) .brand em{background:linear-gradient(90deg,#ffc08f,#b26234);-webkit-background-clip:text;background-clip:text}
+:where(html.dog) .new-chat{box-shadow:0 10px 24px -8px rgba(255,190,140,.7);text-shadow:0 1px 2px rgba(213,102,17,.25)}
+:where(html.dog) .new-chat:hover{box-shadow:0 14px 30px -8px rgba(255,190,140,.85)}
+:where(html.dog) .side-label{color:#8d6c59}
+:where(html.dog) .chat-item{color:#826b5d}
+:where(html.dog) .chat-item.active{box-shadow:0 4px 14px -6px rgba(169,100,61,.4)}
+:where(html.dog) .chat-item .del{color:#906b55}
+:where(html.dog) .chat-item .del:hover{color:#ffad6f}
+:where(html.dog) .side-foot{background:linear-gradient(135deg,#fef8f1,#fef6ed)}
+:where(html.dog) .status{box-shadow:0 4px 14px -6px rgba(169,100,61,.35)}
+:where(html.dog) .icon-btn{box-shadow:0 4px 14px -6px rgba(169,100,61,.5)}
+:where(html.dog) main::-webkit-scrollbar-thumb,:where(html.dog) .chat-list::-webkit-scrollbar-thumb{background:#f0e7dc}
+:where(html.dog) .halo{background:radial-gradient(circle,#fef1e2 0%,#fef3e7 45%,transparent 70%)}
+:where(html.dog) .bunny:hover{filter:brightness(1.03) drop-shadow(0 0 16px #fde9d3)}
+:where(html.dog) .shadow{background:rgba(169,100,61,.25)}
+:where(html.dog) .spark,:where(html.dog) .heart{color:#ffd4b3}
+:where(html.dog) .s2{color:#b26234}
+:where(html.dog) .heart{color:#ffc89e}
+:where(html.dog) h1{filter:url(#furry) drop-shadow(0 3px 0 #fff) drop-shadow(0 6px 14px rgba(172,99,57,.35))}
+:where(html.dog) .name{background:linear-gradient(90deg,#ffc08f,#b26234,#b26234,#ffc08f);-webkit-background-clip:text;background-clip:text}
+:where(html.dog) .card{box-shadow:0 8px 24px -14px rgba(169,100,61,.5)}
+:where(html.dog) .user .bubble{background:linear-gradient(135deg,#ffba86,#b26234);box-shadow:0 10px 24px -12px rgba(255,190,140,.8);text-shadow:0 1px 2px rgba(213,102,17,.2)}
+:where(html.dog) .bot .bubble{box-shadow:0 10px 30px -18px rgba(169,100,61,.6)}
+:where(html.dog) .bubble h1,:where(html.dog) .bubble h2,:where(html.dog) .bubble h3{color:#f19a57}
+:where(html.dog) .bubble strong{color:#402d20}
+:where(html.dog) .bubble code{background:#fdf6ef;color:#b26234}
+:where(html.dog) .bubble pre{background:#402d21}
+:where(html.dog) .bubble pre code{color:#fef4e9}
+:where(html.dog) .bubble table{border:1.5px solid #f6efe6}
+:where(html.dog) .bubble th,:where(html.dog) .bubble td{border-bottom:1.5px solid #f8f2ec}
+:where(html.dog) .bubble th{background:linear-gradient(135deg,#fef8f1,#fef7f0)}
+:where(html.dog) .bubble a{color:#f29c5a}
+:where(html.dog) .bubble blockquote{background:#fffbf7}
+:where(html.dog) .actions button:hover{box-shadow:0 4px 12px -6px rgba(169,100,61,.5)}
+:where(html.dog) .err{color:#f09148}
+:where(html.dog) .typing i:nth-child(2){background:#b26234}
+:where(html.dog) .typing i:nth-child(3){background:#b26234}
+:where(html.dog) .input-box{box-shadow:0 14px 40px -16px rgba(169,100,61,.55)}
+:where(html.dog) .input-box:focus-within{box-shadow:0 0 0 6px rgba(255,223,198,.35),0 14px 40px -16px rgba(255,190,140,.6)}
+:where(html.dog) textarea::placeholder{color:#8e6b57}
+:where(html.dog) #send{box-shadow:0 8px 20px -8px rgba(255,190,140,.9)}
+:where(html.dog) .hint{color:#8a6c5b}
+@media(max-width:760px){:where(html.dog) .overlay.show{background:rgba(110,78,60,.25)}}
+:where(html.dog) .bubble strong{color:#402d20;background:linear-gradient(transparent 60%,#fdf0e2 60%)}
+:where(html.dog) .theme-btn{background:linear-gradient(135deg,#fff,#fcf5ee);box-shadow:0 4px 14px -6px rgba(169,100,61,.6)}
+:where(html.dog) .theme-btn i{box-shadow:0 2px 8px rgba(255,190,140,.6)}
+:where(html.dog) .usage.low{color:#f09148;background:#fef8f1}
+:where(html.dog) .pro-btn{background:linear-gradient(135deg,#fdecd8,#fdeddb);box-shadow:0 4px 14px -6px rgba(169,100,61,.6)}
+:where(html.dog) .pro-btn.active{background:linear-gradient(135deg,#fde68a,#f9cba8)}
+:where(html.dog) .tool-btn{color:#826b5d}
+:where(html.dog) .in-btn{color:#8d6c59}
+:where(html.dog) .in-btn:hover{background:#fcf6ef;color:#f19a57}
+:where(html.dog) .in-btn.rec{background:#ffad6f}
+:where(html.dog) .chip{border:1.5px solid #f6eee4}
+:where(html.dog) .chip i{color:#906b55}
+:where(html.dog) .chip i:hover{color:#ffad6f}
+:where(html.dog) .thumb{box-shadow:0 6px 20px -10px rgba(169,100,61,.6)}
+:where(html.dog) .code-bar{background:#523c2e;color:#faedde}
+:where(html.dog) .file-card{background:linear-gradient(135deg,#fef8f1,#fef6ed);box-shadow:0 8px 24px -14px rgba(169,100,61,.7)}
+:where(html.dog) .file-card button{box-shadow:0 3px 10px -5px rgba(169,100,61,.6)}
+:where(html.dog) .drop{background:rgba(253,247,240,.8)}
+:where(html.dog) .modal{background:rgba(110,78,60,.3)}
+:where(html.dog) .modal-card{background:linear-gradient(180deg,#fff,#fdfaf6);box-shadow:0 30px 80px -20px rgba(169,100,60,.5)}
+:where(html.dog) .modal-x{background:#fcf6ef}
+:where(html.dog) .modal-head h2 span{background:linear-gradient(90deg,#ffc08f,#b26234);-webkit-background-clip:text;background-clip:text}
+:where(html.dog) .plan{border:2px solid #f7f1ea}
+:where(html.dog) .plan.best{border-color:#f9cba8;background:linear-gradient(180deg,#fffbf7,#fef8f2);box-shadow:0 14px 40px -18px rgba(255,190,140,.8)}
+:where(html.dog) .price{color:#f19a57}
+:where(html.dog) .plan li.no{color:#906b55}
+:where(html.dog) .buy{box-shadow:0 10px 24px -8px rgba(255,190,140,.8)}
+:where(html.dog) .code-form input{border:2px solid #f6eee4}
+:where(html.dog) .code-form button{background:#523d2f}
+:where(html.dog) .pro-active{background:linear-gradient(135deg,#fef3c7,#fcf2e7)}
+:where(html.dog) .pro-btn.vip{background:linear-gradient(135deg,#fde68a,#fbbf24,#f9cba8)}
+:where(html.dog) .modes button{color:#826b5d}
+:where(html.dog) .modes button.on{box-shadow:0 6px 16px -8px rgba(255,190,140,.9)}
+:where(html.dog) .plan.max{background:linear-gradient(180deg,#fffbeb,#fffbf7)}
+:where(html.dog) .plan.max .tag{background:linear-gradient(135deg,#fbbf24,#f4aa72)}
+:where(html.dog) .gen{background:#fbf5ef}
+:where(html.dog) .gen.loading{background:linear-gradient(110deg,#fbf5ef 30%,#fff 50%,#fbf5ef 70%)}
+:where(html.dog) .set-card textarea{border:2px solid #f6eee4}
+:where(html.dog) .seg button{background:#fbf5ef;color:#826b5d}
+:where(html.dog) .set-card input[type=range]{accent-color:#f4aa72}
+:where(html.dog) .set-card select{border:2px solid #f6eee4}
+:where(html.dog) .cats button{color:#826b5d}
+:where(html.dog) .cats button.on{box-shadow:0 6px 16px -8px rgba(255,190,140,.9)}
+:where(html.dog) .code-hero{background:linear-gradient(135deg,#fef7ef,#fef7f0);box-shadow:0 18px 40px -20px rgba(178,98,52,.6)}
+:where(html.dog) .modes button.codex.on{background:linear-gradient(135deg,#111,#6d4d3b);box-shadow:0 6px 18px -8px #b26234}
+:where(html.dog) .modes button.meme.on{background:linear-gradient(135deg,#ffe600,#ff9b4f,#00e1ff);box-shadow:0 6px 18px -8px #ff9b4f}
+:where(html.dog) .in-btn.gear.on{color:#ffad6f}
+:where(html.dog) .model-item{background:#fefaf5;border:1.5px solid #f8f0e6}
+:where(html.dog) .model-item:hover{border-color:#b26234}
+:where(html.dog) .model-item.on{background:linear-gradient(135deg,#fef8f1,#fef7f0);border-color:#ffc99f}
+:where(html.dog) .model-item.on em{color:#ffad6f}
+:where(html.dog) .announce{background:linear-gradient(90deg,#fef8f1,#fef7f0);box-shadow:0 8px 20px -14px rgba(169,100,61,.6)}
+:where(html.dog) .tools-pop{border:1.5px solid #faefe3;box-shadow:0 24px 60px -20px rgba(169,100,60,.55)}
+:where(html.dog) .tools-pop input{border:1.5px solid #f8eee2}
+:where(html.dog) .tools-list button{background:#fefaf5}
+:where(html.dog) .tools-list button:hover{background:#fdf3e8}
+:where(html.dog) .voice-bar{background:linear-gradient(90deg,#fef8f1,#fef7ef)}
+:where(html.dog) .pulse{background:#ffa35c;box-shadow:0 0 0 0 rgba(255,163,92,.6)}
+:where(html.dog) .mem{background:#fcf6ef}
+:where(html.dog) #setRole{border:1.5px solid #f8eee2}
+:where(html.dog) .plug-note{background:#fef7ef!important;color:#8a573a!important}
+:where(html.dog) .plug-item{background:#fefaf5;border:1.5px solid #f8f0e6}
+:where(html.dog) .plug-item .sw{background:#9d6748}
+:where(html.dog) .plug-item.on{border-color:#ffdcc2;background:linear-gradient(135deg,#fefaf6,#fef9f3)}
+:where(html.dog) .plug-item.on .sw{background:linear-gradient(90deg,#ffc08f,#b26234)}
+:where(html.dog) .plug-used span{background:#fef7ef;color:#8a573a}
+:where(html.dog) .plug-tabs{background:#fbf6f0}
+:where(html.dog) .st-btn{background:linear-gradient(90deg,#ffc08f,#b26234)}
+:where(html.dog) .plug-add{border:1.5px dashed #b26234}
+:where(html.dog) .plug-form{background:#fefaf5}
+:where(html.dog) .plug-form input:not([type=radio]):not([type=checkbox]),:where(html.dog) .plug-form textarea,:where(html.dog) .pf-search{border:1.5px solid #f3eadf}
+:where(html.dog) .ghost-btn{border:1.5px solid #b26234}
+:where(html.dog) .actions button.voted{background:#fef4e9}
+:where(html.dog) .inbox-msg{box-shadow:0 20px 50px -14px rgba(120,69,40,.5);border:2px solid #fdecd8}
+/* ===== 🐶 тема Dog: переливание чёрного, оранжевого, белого, серого и коричневого ===== */
+html.dog{--bg:#fff8f0;--card:rgba(255,250,244,.82);--line:rgba(140,90,50,.25);--text:#2b1a0e;--muted:#7b5d47;--pink:#ff8a1f;--pink2:#ffc18a;--lav:#a87b55;--grad:linear-gradient(135deg,#ff9a3c,#8b4a1c);--shadow:0 10px 40px -12px rgba(50,25,8,.55)}
+html.dog body{background:linear-gradient(125deg,#141414 0%,#6b3d1e 14%,#ff7a1a 28%,#fff6ec 42%,#9a9a9a 56%,#2a2a2a 70%,#c46a24 84%,#141414 100%);background-size:600% 600%;animation:dogflow 26s ease-in-out infinite;color:var(--text)}
+@keyframes dogflow{0%{background-position:0% 30%}25%{background-position:50% 100%}50%{background-position:100% 60%}75%{background-position:40% 0%}100%{background-position:0% 30%}}
+html.dog .cloud,html.dog .glow{display:none}
+html.dog .sky::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.18),transparent 40%),radial-gradient(circle at 80% 70%,rgba(255,140,40,.18),transparent 45%)}
+.dogface{position:absolute;display:none;width:var(--s,64px);opacity:.9;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35));animation:dogfloat var(--d,40s) linear infinite;animation-delay:var(--dl,0s);will-change:transform}
+html.dog .dogface{display:block}
+@keyframes dogfloat{0%{transform:translate(0,110vh) rotate(-12deg)}25%{transform:translate(30px,75vh) rotate(8deg)}50%{transform:translate(-20px,40vh) rotate(-6deg)}75%{transform:translate(24px,8vh) rotate(10deg)}100%{transform:translate(0,-140px) rotate(-8deg)}}
+html.dog .sidebar,html.dog .bot .bubble,html.dog .card,html.dog .status,html.dog .modal-card{background:rgba(255,250,244,.9);border-color:rgba(255,255,255,.95)}
+html.dog .user .bubble{background:linear-gradient(135deg,#ff8a1f,#8b4a1c);box-shadow:0 10px 24px -12px rgba(120,60,10,.9)}
+html.dog h1,html.dog .sub{display:table;margin-left:auto;margin-right:auto;padding:6px 22px;border-radius:24px;background:rgba(255,250,244,.88);box-shadow:var(--shadow)}
+html.dog h1{filter:none;color:#2b1a0e}
+html.dog .sub{color:#5a3f2c}
+html.dog .name{background:linear-gradient(90deg,#ff7a1a,#3a2414,#9a9a9a,#c46a24,#ff7a1a);background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent}
+html.dog .hint{display:table;margin:10px auto 0;padding:3px 12px;border-radius:99px;background:rgba(255,250,244,.8);color:#7b5d47}
+html.dog .halo{background:radial-gradient(circle,#ffd9b0 0%,#f3e6da 45%,transparent 70%)}
+html.dog .spark,html.dog .heart{color:#ff8a1f}
+html.dog .s2{color:#fff}.dog .s3{color:#6b3d1e}
+html.dog .heart::before{content:"🦴";font-size:18px}html.dog .heart{font-size:0}
+html.dog .shadow{background:rgba(40,20,5,.35)}
+html.dog .bubble pre{background:#1e1712}
+html.dog .bubble h1,html.dog .bubble h2,html.dog .bubble h3{display:block;padding:0;background:none;box-shadow:none;margin-left:0;color:#c45a10}
+html.dog .theme-btn{background:linear-gradient(90deg,#1a1a1a,#ff8a1f,#fff,#8d8d8d,#6b3d1e);border-color:#fff}
+html.dog .theme-btn i{transform:translateX(18px);background:#fff url(/dog.svg) center/cover;box-shadow:0 2px 10px rgba(0,0,0,.45)}
+.g-only{display:none!important}
+html.dog .g-only{display:inline!important}
+html.dog img.g-only{display:block!important}
+html.dog .l-only{display:none!important}
+html.dog .brand img.g-only{border-radius:10px}
+html.dog .drip{display:none}
+html.dog .brand em{background:linear-gradient(90deg,#ff7a1a,#6b3d1e);-webkit-background-clip:text;background-clip:text;color:transparent}

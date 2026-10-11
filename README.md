@@ -88,7 +88,7 @@
 - **Windows** — `public/download/RabbitAI.exe`. Открывает сайт отдельным окном (Edge/Chrome). При SmartScreen: «Подробнее» → «Выполнить в любом случае».
 - **Mac / Chrome / Edge** — значок «Установить» в адресной строке.
 
-### Если адрес сайта не https://rabbit-ai.onrender.com
+### Если адрес сайта не https://rabbit-ai-rjdr.onrender.com
 - Android: на экране «нет связи» в приложении можно поменять адрес, или пересобрать: `cd apps/android && ./build.sh https://ВАШ-АДРЕС` (нужны Android SDK 34 и JDK 17).
 - Windows: положить рядом с exe файл `rabbit-url.txt` с адресом, или пересобрать:
   `zig cc -target x86_64-windows-gnu -municode -Wl,--subsystem,windows -O2 -s -DAPP_URL=L\"https://ВАШ-АДРЕС\" launcher.c launcher.rc -lshell32 -o RabbitAI.exe`

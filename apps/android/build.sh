@@ -10,7 +10,7 @@ package kz.rabbitai.app;
 final class BuildConfigUrl { static final String URL = "$URL"; }
 J
 $BT/aapt2 compile --dir res -o out/res.zip
-$BT/aapt2 link -I $JAR --manifest AndroidManifest.xml -A assets -o out/base.apk --java out/gen out/res.zip --min-sdk-version 24 --target-sdk-version 34 --version-code 3 --version-name 3.0
+$BT/aapt2 link -I $JAR --manifest AndroidManifest.xml -A assets -o out/base.apk --java out/gen out/res.zip --min-sdk-version 24 --target-sdk-version 34 --version-code 4 --version-name 3.1
 javac -nowarn -Xlint:none --release 11 -encoding UTF-8 -cp $JAR -d out/classes $(find src out/gen -name '*.java') 2>&1 | grep -v "warning" || true
 $BT/d8 --release --min-api 24 --lib $JAR --output out/dex $(find out/classes -name '*.class')
 cp out/base.apk out/unsigned.apk && (cd out/dex && zip -q ../unsigned.apk classes.dex)
